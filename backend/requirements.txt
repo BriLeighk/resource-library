@@ -1,0 +1,6 @@
+# List of Python Dependencies
+flask
+pymongo
+google-api-python-client
+tensorflow
+torch
