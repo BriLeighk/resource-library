@@ -1,11 +1,22 @@
 # Main Backend for Application
+import os
+from dotenv import load_dotenv
 from flask import Flask, request, jsonify
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
-# TODO: Connect to MongoDB database
+# Load environment variables from .env
+load_dotenv()
 
-# TODO: Endpoint to add a resource
+# Connect to MongoDB database
+# make sure to create .env file with MONGO_URI variable (.gitignore ensures it won't be committed to github)
+mongo_uri = os.getenv("MONGO_URI") 
+client = MongoClient(mongo_uri)
+db = client['resourceLibrary']  # accesses resourceLibrary database or creates it if it doesn't exist
+collection = db['resources']  # accesses resources collection or creates it if it doesn't exist
+
+# TODO: Endpoint to create/add a resource
 
 # TODO: Function to validate resource URL using Google Safe Browsing API
 
